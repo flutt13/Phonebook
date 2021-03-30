@@ -116,6 +116,7 @@ public class PhonebookEntryServiceTest {
                 "firstname", "lastname", "firstname lastname", owner);
         PhonebookEntryDto updated = new PhonebookEntryDto(null, "+74782910234",
                 null, null);
+        when(userRepoMock.findByUserName(owner.getUserName())).thenReturn(owner);
         when(phonebookEntryRepoMock.findByAlias(entry.getAlias())).thenReturn(entry);
         Assertions.assertThat(phonebookEntryService.editPhonebookEntry(entry.getAlias(), updated).getPhoneNumber())
                 .isEqualTo(updated.getPhoneNumber());
