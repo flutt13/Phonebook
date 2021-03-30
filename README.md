@@ -4,13 +4,19 @@
 This API works exclusively with dtos, meaning everything you pass to API should be a DTO and everything you receive would be a DTO.
 Fields description are in DTOs section.
 
-## Util
+## Build and launch
+
+If you are launching this on aws ec2 make sure you open port 8080 in security groups.
+
+### Shell
 
 Build and launch (tested on aws ubuntu 20.04 t2.micro)
 ```bash
+sudo apt update
 sudo apt install openjdk-8-jdk -y
 git clone https://github.com/flutt13/Phonebook.git
 cd ./Phonebook/
+chmod +x ./mvnw
 ./mvnw clean package
 java -jar ./target/phonebook-0.0.1-SNAPSHOT.jar
 ```
