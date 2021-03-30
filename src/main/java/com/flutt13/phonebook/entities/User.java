@@ -1,6 +1,8 @@
 package com.flutt13.phonebook.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.RandomStringUtils;
 
 import javax.persistence.*;
@@ -9,6 +11,8 @@ import javax.validation.constraints.Size;
 
 @Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "user")
 public class User {
 
@@ -36,7 +40,7 @@ public class User {
     @NotNull
     private String fullName;
 
-    public static String generateUserId() {
+    public static String generateUserName() {
         return RandomStringUtils.randomAlphanumeric(8);
     }
 

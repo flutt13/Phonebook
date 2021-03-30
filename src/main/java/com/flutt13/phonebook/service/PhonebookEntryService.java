@@ -31,10 +31,10 @@ public class PhonebookEntryService {
     }
 
     public PhonebookEntryDto createPhonebookEntry(String userName, PhonebookEntryDto phonebookEntryDto) {
+        PhonebookEntryDto.validatePhonebookEntryDto(phonebookEntryDto);
         PhonebookEntry entry = PhonebookEntryDto.PhonebookEntryDtoToPhonebookEntry(phonebookEntryDto);
         User owner = userService.findUser(userName);
         entry.setOwner(owner);
-        entry.setFullName();
         if (entry.getAlias() == null) entry.setAlias(PhonebookEntry.generateAlias(entry));
         if (phonebookEntryRepo.findByAlias(entry.getAlias()) != null) throw new EntityExistsException();
         try {
@@ -51,8 +51,8 @@ public class PhonebookEntryService {
     }
 
     public List<PhonebookEntryDto> getOwnerPhonebookEntries(String userName) {
-        userService.findUser(userName);
-        List<PhonebookEntry> entries = phonebookEntryRepo.findAll();
+        User owner = userService.findUser(userName);
+        List<PhonebookEntry> entries = phonebookEntryRepo.findByOwner(owner);
         if (entries.isEmpty()) throw new EntityNotFoundException();
         List<PhonebookEntryDto> entriesDto = new ArrayList<>();
         for (PhonebookEntry entry : entries) {

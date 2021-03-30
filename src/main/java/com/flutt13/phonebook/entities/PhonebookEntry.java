@@ -1,7 +1,8 @@
 package com.flutt13.phonebook.entities;
 
-import com.flutt13.phonebook.entities.dto.PhonebookEntryDto;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -9,6 +10,8 @@ import javax.validation.constraints.Size;
 
 @Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "phonebook")
 public class PhonebookEntry {
 

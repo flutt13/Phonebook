@@ -11,4 +11,5 @@ public interface PhonebookEntryRepo extends JpaRepository<PhonebookEntry, Long> 
     public void deleteByAlias(String alias);
     public void deleteByOwner(User owner);
     public List<PhonebookEntry> findByPhoneNumber(String phoneNumber);
+    public List<PhonebookEntry> findByOwner(User owner);
 }

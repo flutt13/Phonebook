@@ -23,7 +23,7 @@ public class UserService {
     @Autowired
     private PhonebookEntryService phonebookEntryService;
 
-    public User findUser(String userName) {
+    User findUser(String userName) {
         User user = userRepo.findByUserName(userName);
         if (user == null) throw new EntityNotFoundException();
         return user;
@@ -40,9 +40,9 @@ public class UserService {
     }
 
     public UserDto addUser(UserDto userDto) {
+        UserDto.validateUserDto(userDto);
         User user = UserDto.UserDtoToUser(userDto);
-        if (user.getUserName() == null) user.setUserName(User.generateUserId());
-        user.setFullName();
+        if (user.getUserName() == null) user.setUserName(User.generateUserName());
         if (userRepo.findByUserName(user.getUserName()) != null) throw new EntityExistsException();
         try {
             userRepo.save(user);
