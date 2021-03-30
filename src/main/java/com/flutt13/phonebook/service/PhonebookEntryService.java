@@ -79,8 +79,9 @@ public class PhonebookEntryService {
         return PhonebookEntryDto.PhonebookEntrytoPhonebookEntryDto(updated);
     }
 
-    public List<PhonebookEntryDto> getPhonebookEntriesByPhoneNumber(String phoneNumber) {
-        List<PhonebookEntry> entries = phonebookEntryRepo.findByPhoneNumber(phoneNumber);
+    public List<PhonebookEntryDto> getPhonebookEntriesByPhoneNumber(String userName, String phoneNumber) {
+        User owner = userService.findUser(userName);
+        List<PhonebookEntry> entries = phonebookEntryRepo.findByOwnerAndPhoneNumber(owner, phoneNumber);
         if (entries.isEmpty()) throw new EntityNotFoundException();
         List<PhonebookEntryDto> entriesDto = new ArrayList<>();
         for (PhonebookEntry entry : entries) {

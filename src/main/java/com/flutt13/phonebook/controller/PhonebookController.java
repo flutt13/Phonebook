@@ -25,8 +25,8 @@ public class PhonebookController {
 
     @GetMapping
     @ResponseBody
-    public List<PhonebookEntryDto> getPhonebookEntriesByPhoneNumber(@RequestParam("phoneNumber") String phoneNumber) {
-        return phonebookEntryService.getPhonebookEntriesByPhoneNumber(phoneNumber);
+    public List<PhonebookEntryDto> getPhonebookEntriesByPhoneNumber(@PathVariable("userName") String userName, @RequestParam("phoneNumber") String phoneNumber) {
+        return phonebookEntryService.getPhonebookEntriesByPhoneNumber(userName, phoneNumber);
     }
 
     @GetMapping("/all")
