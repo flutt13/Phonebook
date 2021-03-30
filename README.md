@@ -74,7 +74,7 @@ User:
     # Create user
   - POST /api/user
 
-    # Get user by name (or it's part)
+    # Get user by name {name} param (or it's part)
   - GET /api/user
 
     # Get all users
