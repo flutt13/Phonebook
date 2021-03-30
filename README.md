@@ -6,7 +6,7 @@ Fields description are in DTOs section.
 
 ## Build and launch
 
-If you are launching this on aws ec2 make sure you open port 8080 in security groups.
+If you are launching this app on aws ec2 make sure you open port 8080 in security groups if you want to access app from outside.
 
 ### Shell
 
